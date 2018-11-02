@@ -32,11 +32,24 @@ public class DemoServiceImpl implements IDemoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<DemoEntity> findAll() {
+        return demoRepository.findAll();
+    }
+
+    @Override
+    public DemoEntity updateStatusById(String id) {
+        demoRepository.updateStatusById(id);
+        return demoRepository.findById(id).get();
+    }
+
+    @Override
     public void deleteById(String id) {
         demoRepository.deleteById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public void findById(String id) {
         demoRepository.findById(id);
     }

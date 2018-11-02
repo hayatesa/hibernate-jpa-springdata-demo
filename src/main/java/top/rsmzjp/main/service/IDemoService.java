@@ -14,4 +14,8 @@ public interface IDemoService {
 
     void save(DemoEntity entity);
 
+    List<DemoEntity> findAll();
+
+    DemoEntity updateStatusById(String id);
+
 }
